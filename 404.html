@@ -1,36 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>404 — Not Found</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container" style="text-align:center; padding-top:100px">
-    <h1 style="font-size:3rem; margin-bottom:10px">404</h1>
-    <h2>User not found</h2>
-    <p style="color:var(--muted); margin:16px 0 24px">
-      The GitHub username doesn't exist or the link is invalid.
-    </p>
-    <a href="/" class="btn">Go Home</a>
-  </div>
-
+  <meta charset="utf-8">
+  <title>Loading...</title>
   <script>
-    // GitHub Pages fix: direct visits to /search/username land here
-    // Redirect back to the app so script.js can load the profile
-    const match = location.pathname.match(/\/search\/([^\/#?]+)/);
-    if (match) {
-      // keep the username and go to home, the app will pick it up
-      const username = match[1];
-      location.replace(`/search/${username}`);
-    }
-
-    // also catch old /login/ links
-    const old = location.pathname.match(/\/login\/([^\/#?]+)/);
-    if (old) {
-      location.replace(`/search/${old[1]}`);
-    }
+    // 1. Remember the link the person clicked (/search/torvalds)
+    sessionStorage.setItem('gh_redirect', location.pathname + location.search + location.hash);
+    // 2. Send them to the real app at /
+    location.replace('/');
   </script>
-</body>
+</head>
+<body></body>
 </html>
