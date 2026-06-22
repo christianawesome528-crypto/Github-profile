@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitHub Profile Viewer</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container" id="app">
+    <header>
+      <h1><span class="logo">gh</span> Profile Viewer</h1>
+    </header>
+
+    <!-- HOME -->
+    <section id="home-view">
+      <form id="login-form">
+        <input type="text" id="username-input" placeholder="Enter GitHub username" autocomplete="off" required />
+        <button type="submit">Search</button>
+      </form>
+      <p class="hint">Try: <code>/search/torvalds</code></p>
+
+      <div class="about">
+        <h2>Instantly explore any GitHub profile</h2>
+        <p>This lightweight web app lets you view any public GitHub user without logging in. Perfect for recruiters checking portfolios, developers exploring code, or students learning from open source.</p>
+        <ul>
+          <li>✓ See avatar, bio, followers, following</li>
+          <li>✓ Browse all public repositories</li>
+          <li>✓ One-tap <strong>Download ZIP</strong> for any repo</li>
+          <li>✓ Shareable links — send <code>/search/username</code> to anyone</li>
+          <li>✓ 100% free, uses GitHub's public API</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section id="profile-view" class="hidden">
+      <a href="/" class="back-link">← Back to Home</a>
+      <div id="loader" class="loader hidden"></div>
+      <div id="profile-card"></div>
+      <h3 class="repos-title">Repositories</h3>
+      <div id="repos-grid"></div>
+    </section>
+
+    <!-- 404 -->
+    <section id="notfound-view" class="hidden">
+      <h2>404 — User not found</h2>
+      <p>The GitHub user doesn't exist or the link is invalid.</p>
+      <a href="/" class="btn">Go Home</a>
+    </section>
+  </div>
+
+  <footer>
+    <p>Made for GitHub Pages • No login required</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
