@@ -21,6 +21,14 @@ function navigateToUser(username) {
 }
 
 async function loadRoute() {
+  // === FIX FOR SHARED LINKS ON GITHUB PAGES ===
+  const redirect = sessionStorage.getItem('gh_redirect');
+  if (redirect) {
+    sessionStorage.removeItem('gh_redirect');
+    history.replaceState(null, '', redirect);
+  }
+  // === END FIX ===
+
   const match = window.location.pathname.match(/\/search\/([^\/#?]+)/);
   if (match) {
     const username = decodeURIComponent(match[1]);
@@ -66,7 +74,6 @@ async function showProfile(username) {
     renderProfile(user, repos);
   } catch (err) {
     loader.classList.add('hidden');
-    history.replaceState({}, '', '/404.html');
     show404();
   }
 }
